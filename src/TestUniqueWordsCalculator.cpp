@@ -24,7 +24,7 @@ void testUniqueWordsCalculator(std::string fileName)
     startTime = clock();
 
     int expectedUniqueWords = sequential(fileName);
-    std::cout << "Number of unique words: " << expectedUniqueWords << std::endl;
+    std::cout << "Expected number of unique words: " << expectedUniqueWords << std::endl;
 
     endTime = clock();
     printTime(startTime, endTime);

@@ -41,7 +41,7 @@ void UniqueWordsCalculator::createThreads()
 
         int start = numOfLinesForThread * i;
         int end = start + numOfLinesForThread;
-        
+
         threads.push_back(std::thread(&UniqueWordsCalculator::insertUnique, this, lines, start, end, std::move(tokens)));
         ++i;
     }
@@ -58,7 +58,7 @@ void UniqueWordsCalculator::insertUnique(const std::vector<std::string>& constLi
             std::copy(std::execution::par,
                 std::istream_iterator<std::string>(stream),
                 std::istream_iterator<std::string>(),
-                std::inserter(tokensInOneThread, tokensInOneThread.end()));
+                std::inserter(tokensInOneThread, tokensInOneThread.begin()));
         }
         catch (std::exception e)
         {
@@ -78,7 +78,7 @@ int UniqueWordsCalculator::getNumOfUniqueWords()
         std::copy(std::execution::par,
             f.begin(),
             f.end(),
-            std::inserter(tokensFinal, tokensFinal.end()));
+            std::inserter(tokensFinal, tokensFinal.begin()));
     }
     return tokensFinal.size();
 }
